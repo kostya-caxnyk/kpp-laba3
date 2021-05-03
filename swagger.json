@@ -1,0 +1,310 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API",
+    "description": "Documentation for API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8000/api"
+    }
+  ],
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Student": {
+        "type": "object",
+        "description": "Student schema",
+        "properties": {
+          "_id": {
+            "type": "ObjectId",
+            "example": "607421b518477308ec1969da"
+          },
+          "name": {
+            "type": "string",
+            "description": "Student name (fio)",
+            "required": true,
+            "example": "Kostya Batut"
+          },
+          "groupId": {
+            "type": "ObjectId",
+            "description": "Group id to which student belongs",
+            "required": true,
+            "example": "607421b518477308ec1969da"
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2021-05-03T10:52:21.150+00:00"
+          },
+          "updatedAt": {
+            "type": "date",
+            "example": "2021-05-03T10:52:21.150+00:00"
+          }
+        }
+      },
+      "Group": {
+        "type": "object",
+        "description": "Group schema",
+        "properties": {
+          "_id": {
+            "type": "ObjectId",
+            "example": "607421b518477308ec1969da"
+          },
+          "name": {
+            "type": "string",
+            "description": "Group name",
+            "required": true,
+            "example": "1kn-19b"
+          },
+          "students": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Student"
+            }
+          },
+          "createdAt": {
+            "type": "date",
+            "example": "2021-05-03T10:52:21.150+00:00"
+          },
+          "updatedAt": {
+            "type": "date",
+            "example": "2021-05-03T10:52:21.150+00:00"
+          }
+        }
+      }
+    },
+    "responses": {
+      "serverError": {
+        "description": "server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "string",
+              "example": "Something went wrong"
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "group": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Get all Groups with their students",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Group"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/serverError"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Create Groups",
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Group"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/serverError"
+          }
+        }
+      }
+    },
+    "group/:id": {
+      "delete": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Delete group",
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/serverError"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Update group",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Group"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/serverError"
+          }
+        }
+      }
+    },
+    "student": {
+      "get": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Get all students",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Student"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/serverError"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Create student",
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/serverError"
+          }
+        }
+      }
+    },
+    "student/:id": {
+      "delete": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Delete student",
+        "responses": {
+          "204": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/serverError"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Students"
+        ],
+        "summary": "Update student",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Student"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/serverError"
+          }
+        }
+      }
+    },
+    "searchByName/:name": {
+      "get": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "Search students by name and return groups with sought students",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Group"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/serverError"
+          }
+        }
+      }
+    }
+  }
+}
+

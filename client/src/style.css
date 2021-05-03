@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+}
+
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+    margin-top: 60px;
+    min-height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.groups_list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px 60px;
+    max-width: 70%;
+    align-items: flex-start
+}
+
+.groups_list__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 300px;
+    border: 1px solid gray;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    margin-right: 15px;
+}
+
+.header {
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.header input {
+    display: inline-block;
+    width: 70%
+}
+
+.btn-green {
+    padding: 10px;
+    color: #000;
+    background: aquamarine;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.edit-btn {
+    position: absolute;
+    right: 5px;
+    top: 15px;
+}
+
+.edit-btn button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    border: 1px solid #6e6d76;
+    width: 30px;
+    height: 30px;
+}
+
+.edit-menu {
+    position: absolute;
+    top: 0;
+    min-width: 120px;
+    padding: 0;
+    list-style: none;
+    background: #424242;
+    color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #d3d4d5;
+    z-index: 100;
+}
+
+.edit-menu__item {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.edit-menu__item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.students-list {
+    align-self: start;
+    width: 100%
+}
+
+.students-list__item {
+    position: relative;
+    padding: 10px 40px 10px 0
+}
+
+.student__edit-btn {
+    top: 0;
+}
+
+.student__edit-btn button {
+    width: 25px;
+    height: 25px;
+}
