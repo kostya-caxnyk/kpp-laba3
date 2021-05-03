@@ -93,7 +93,7 @@
     }
   },
   "paths": {
-    "group": {
+    "/group": {
       "get": {
         "tags": [
           "Groups"
@@ -123,6 +123,20 @@
           "Groups"
         ],
         "summary": "Create Groups",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "example": "3kn-19b"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Success",
@@ -141,12 +155,23 @@
         }
       }
     },
-    "group/:id": {
+    "/group/:id": {
       "delete": {
         "tags": [
           "Groups"
         ],
         "summary": "Delete group",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "group id",
+            "schema": {
+              "type": "ObjectId"
+            },
+            "required": true
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success",
@@ -168,6 +193,31 @@
           "Groups"
         ],
         "summary": "Update group",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "group id",
+            "schema": {
+              "type": "ObjectId"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "example": "4kn-19b"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -186,7 +236,7 @@
         }
       }
     },
-    "student": {
+    "/student": {
       "get": {
         "tags": [
           "Students"
@@ -216,6 +266,23 @@
           "Students"
         ],
         "summary": "Create student",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "example": "Kostya Baloon"
+                  },
+                  "groupId": {
+                    "example": "607421b518477308ec1969da"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "201": {
             "description": "Success",
@@ -234,12 +301,23 @@
         }
       }
     },
-    "student/:id": {
+    "/student/:id": {
       "delete": {
         "tags": [
           "Students"
         ],
         "summary": "Delete student",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "student id",
+            "schema": {
+              "type": "ObjectId"
+            },
+            "required": true
+          }
+        ],
         "responses": {
           "204": {
             "description": "Success",
@@ -261,6 +339,31 @@
           "Students"
         ],
         "summary": "Update student",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "student id",
+            "schema": {
+              "type": "ObjectId"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "example": "Kostya Branch"
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success",
@@ -279,12 +382,23 @@
         }
       }
     },
-    "searchByName/:name": {
+    "/searchByName/:name": {
       "get": {
         "tags": [
           "Search"
         ],
         "summary": "Search students by name and return groups with sought students",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "description": "name of student",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
